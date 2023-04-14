@@ -1,0 +1,36 @@
+<html>
+<body>
+<label for="grades">Ingresa tus notas (separadas por cada una por una coma):</label>
+<input type="text" id="grades">
+<button onclick="calculate()">Calcular promedio académico</button>
+<p id="result">
+	
+</p>
+
+<script type="text/javascript">
+
+function calculate() {
+  // Obtener los valores del input
+  const input = document.getElementById("grades").value;
+  
+  // Verificar si se ingresó algún valor
+  if (input === "") {
+    alert("Debes ingresar al menos una nota de cursada");
+    return;
+  }
+  
+  // Convertir la cadena en un array de números
+  const gradesArray = input.split(",").map(Number);
+  
+  // Calcular el promedio
+  const average = gradesArray.reduce((acc, val) => acc + val, 0) / gradesArray.length;
+  
+  // Mostrar el resultado en el HTML
+  const result = document.getElementById("result");
+  result.innerHTML = `Tu promedio de notas es ${average.toFixed(2)} para las proximas inscripciones`;
+}
+
+</script>
+
+</body>
+</html>
